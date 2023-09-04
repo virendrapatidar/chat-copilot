@@ -177,6 +177,16 @@ public class ChatController : ControllerBase, IDisposable
             await planner.Kernel.ImportChatGptPluginSkillFromUrlAsync("KlarnaShoppingPlugin", new Uri("https://www.klarna.com/.well-known/ai-plugin.json"), new OpenApiSkillExecutionParameters());
         }
 
+        // Sasai Remittance
+        if (openApiSkillsAuthHeaders.TryGetValue("SASAI", out string? SasaiAuthHeader))
+        {
+            this._logger.LogInformation("Registering Sasai plugin");
+
+            // Register the Sasai plugin. There is no authentication required for this plugin.
+            await planner.Kernel.ImportChatGptPluginSkillFromUrlAsync("SasaiPlugin", new Uri("https://raw.githubusercontent.com/virendrapatidar/sasai-chat-api/main/plugin/quotation-plugin.json"),
+            new OpenApiSkillExecutionParameters());
+        }
+
         // GitHub
         if (openApiSkillsAuthHeaders.TryGetValue("GITHUB", out string? GithubAuthHeader))
         {

@@ -5,6 +5,7 @@ import GithubIcon from '../../../assets/plugin-icons/github.png';
 import JiraIcon from '../../../assets/plugin-icons/jira.png';
 import KlarnaIcon from '../../../assets/plugin-icons/klarna.png';
 import GraphIcon from '../../../assets/plugin-icons/ms-graph.png';
+import SasaiIcon from '../../../assets/plugin-icons/sasai.png';
 
 /*
  * For each OpenAPI Spec you're supporting in the Kernel,
@@ -15,6 +16,7 @@ export const enum BuiltInPlugins {
     Jira = 'Jira',
     GitHub = 'GitHub',
     Klarna = 'Klarna Shopping',
+    Sasai = 'Sasai Remittance',
 }
 
 export const enum AuthHeaderTags {
@@ -22,6 +24,7 @@ export const enum AuthHeaderTags {
     Jira = 'jira',
     GitHub = 'github',
     Klarna = 'klarna',
+    Sasai = 'sasai',
 }
 
 export interface PluginAuthRequirements {
@@ -138,6 +141,15 @@ export const initialState: PluginsState = {
             authRequirements: {},
             icon: KlarnaIcon,
             headerTag: AuthHeaderTags.Klarna,
+        },
+        [BuiltInPlugins.Sasai]: {
+            name: BuiltInPlugins.Sasai,
+            publisher: 'Sasai',
+            description: 'Sasai Remittance',
+            enabled: true,
+            authRequirements: {},
+            icon: SasaiIcon,
+            headerTag: AuthHeaderTags.Sasai,
         },
     },
 };
